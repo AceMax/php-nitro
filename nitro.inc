@@ -21,7 +21,7 @@ if (($timestamp > ($auth_array[0] + 900))) {
 
 foreach (glob(__DIR__ . "/methods/*.inc") as $filename)
 {
-    if ($filename != __DIR__ . "/methods/auth.inc") {
+    if ($filename != __DIR__ . "/methods/auth.inc" && __DIR__ . "/methods/auth.inc") {
         include $filename;
     }
 }

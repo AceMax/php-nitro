@@ -1,8 +1,9 @@
 <?php
-///////////////// dnssoarec /////////////////
-class dnssoarec
+///////////////// dnsaddrec /////////////////
+
+class dnsaddrec
 {
-    public function add($domainname, $originserver, $contact)
+    public function add($hostname, $ip, $ttl)
     {
         global $nitroNSIP;
         global $authToken;
@@ -10,17 +11,11 @@ class dnssoarec
         $nitroUrl    = "http://$nitroNSIP/nitro/v1/config/" . get_called_class();
         $nitroReq    = "POST";
         $nitroData   = '{"' . get_called_class() . '":
-          {
-    				"domain": "'.$domainname.'",
-    				"originserver": "'.$originserver.'",
-    				"contact": "'.$contact.'",
-    				"serial": "'.date('Ymd').'01",
-    				"refresh": 3600,
-    				"retry": 3,
-    				"expire": 3600,
-    				"minimum": 5,
-    				"ttl": 3600
-    	    }
+  {
+  "hostname": "'.$hostname.'",
+  "ipaddress": "'.$ip.'",
+  "ttl": '.$ttl.'
+  }
 }
 ';
         $nitroCookie = "Cookie:NITRO_AUTH_TOKEN=$authToken";
@@ -37,6 +32,7 @@ class dnssoarec
 
         $data = json_decode($result, true);
         $output = ($data["message"] == null ? true : false);
+        echo $result;
         return($output);
     }
 
