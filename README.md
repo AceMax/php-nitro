@@ -21,6 +21,7 @@ Rm is used to remote configuration.
 
 There is now check if a resource already exists when you add or remove configuration. That, you will have to take care of using the check method (if you like to).
 
-To start using the library, configure NetScaler IP, user and password in nitro_auth.inc and include the nitro.inc.
+To start using the library, configure NetScaler IP, user, password and a writable temp path in nitro_auth.inc and include the nitro.inc.
+The temp path is used to cache the auth token to minimize NetScaler logon requests.
 
 Show test.php for sample usage.
