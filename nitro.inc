@@ -1,7 +1,7 @@
 <?php
 
 include(__DIR__ . "/nitro_auth.inc");
-include(__DIR__ . "/objects/auth.inc");
+include(__DIR__ . "/methods/auth.inc");
 
 date_default_timezone_set('UTC');
 $timestamp = date('U');
@@ -18,9 +18,12 @@ if (($timestamp > ($auth_array[0] + 900))) {
     $authToken = $auth_array[1];
 }
 
-include(__DIR__ . "/objects/dnsaddrrec.inc");
-include(__DIR__ . "/objects/dnsnsrec.inc");
-include(__DIR__ . "/objects/dnssoarec.inc");
-include(__DIR__ . "/objects/dnszone.inc");
+
+foreach (glob(__DIR__ . "/methods/*.inc") as $filename)
+{
+    if ($filename != __DIR__ . "/methods/auth.inc") {
+        include $filename;
+    }
+}
 
 ?>
