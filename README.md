@@ -19,6 +19,12 @@ Check is used to check if the resource already exists.
 Add is used to add configuration.
 Rm is used to remote configuration.
 
+There is also a common class which has the following methods:
+ - get
+
+get is used to retreive all data of an instance like:
+  $result = common::get(lbvserver);
+
 There is now check if a resource already exists when you add or remove configuration. That, you will have to take care of using the check method (if you like to).
 
 To start using the library, configure NetScaler IP, user, password and a writable temp path in nitro_auth.inc and include the nitro.inc.
